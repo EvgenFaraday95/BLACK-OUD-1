@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLACK OUD №1</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+BLACK OUD №1
+</div>
+
+<p class="subtitle">
+Подберите идеальный аромат и оформите заказ за минуту
+</p>
+
+<div class="delivery-banner">
+🚚 Бесплатная доставка при заказе от 3000 ₽
+</div>
+
+<form id="perfumeForm">
+
+<div class="block">
+<label>Возраст</label>
+<input
+type="number"
+id="age"
+min="16"
+max="100"
+placeholder="Введите возраст">
+</div>
+
+<div class="block">
+<label>Для кого</label>
+
+<select id="gender">
+<option>Мужчина</option>
+<option>Женщина</option>
+<option>Унисекс</option>
+</select>
+
+</div>
+
+<div class="block">
+
+<label>Куда / Когда будете носить аромат</label>
+
+<select id="occasion">
+
+<option>Повседневно</option>
+<option>Работа</option>
+<option>Офис</option>
+<option>Свидание</option>
+<option>Вечер</option>
+<option>Ночь</option>
+<option>Особый случай</option>
+<option>Спорт</option>
+<option>Лето</option>
+<option>Зима</option>
+<option>Весна</option>
+<option>Осень</option>
+<option>Путешествия</option>
+<option>Деловая встреча</option>
+<option>Праздник</option>
+
+</select>
+
+</div>
+
+<div class="block">
+
+<label>Формат</label>
+
+<select id="format">
+
+<option value="100">
+Спрей (100 ₽ за 1 мл)
+</option>
+
+<option value="200">
+Масло (200 ₽ за 1 мл)
+</option>
+
+</select>
+
+</div>
+
+<div class="block">
+
+<label>Объём</label>
+
+<select id="volume">
+
+<option value="3">3 мл</option>
+<option value="5">5 мл</option>
+<option value="6">6 мл</option>
+<option value="10">10 мл</option>
+<option value="15">15 мл</option>
+<option value="20">20 мл</option>
+<option value="25">25 мл</option>
+<option value="30">30 мл</option>
+<option value="35">35 мл</option>
+<option value="50">50 мл</option>
+<option value="100">100 мл</option>
+
+</select>
+
+</div>
+
+<div class="block" id="notesBlock">
+
+<h3>Ноты аромата</h3>
+
+<div class="checkbox-grid">
+
+<label><input type="checkbox" value="Бергамот">Бергамот</label>
+<label><input type="checkbox" value="Лимон">Лимон</label>
+<label><input type="checkbox" value="Лайм">Лайм</label>
+<label><input type="checkbox" value="Апельсин">Апельсин</label>
+<label><input type="checkbox" value="Мандарин">Мандарин</label>
+<label><input type="checkbox" value="Грейпфрут">Грейпфрут</label>
+<label><input type="checkbox" value="Юзу">Юзу</label>
+
+<label><input type="checkbox" value="Роза">Роза</label>
+<label><input type="checkbox" value="Жасмин">Жасмин</label>
+<label><input type="checkbox" value="Пион">Пион</label>
+<label><input type="checkbox" value="Ландыш">Ландыш</label>
+<label><input type="checkbox" value="Ирис">Ирис</label>
+<label><input type="checkbox" value="Фиалка">Фиалка</label>
+<label><input type="checkbox" value="Лаванда">Лаванда</label>
+<label><input type="checkbox" value="Магнолия">Магнолия</label>
+<label><input type="checkbox" value="Тубероза">Тубероза</label>
+
+<label><input type="checkbox" value="Уд">Уд</label>
+<label><input type="checkbox" value="Сандал">Сандал</label>
+<label><input type="checkbox" value="Кедр">Кедр</label>
+<label><input type="checkbox" value="Гваяк">Гваяк</label>
+<label><input type="checkbox" value="Кашмеран">Кашмеран</label>
+
+<label><input type="checkbox" value="Амбра">Амбра</label>
+<label><input type="checkbox" value="Мускус">Мускус</label>
+<label><input type="checkbox" value="Шафран">Шафран</label>
+<label><input type="checkbox" value="Ладан">Ладан</label>
+<label><input type="checkbox" value="Мирра">Мирра</label>
+
+<label><input type="checkbox" value="Ваниль">Ваниль</label>
+<label><input type="checkbox" value="Карамель">Карамель</label>
+<label><input type="checkbox" value="Шоколад">Шоколад</label>
+<label><input type="checkbox" value="Кофе">Кофе</label>
+<label><input type="checkbox" value="Мёд">Мёд</label>
+<label><input type="checkbox" value="Какао">Какао</label>
+<label><input type="checkbox" value="Корица">Корица</label>
+
+<label><input type="checkbox" value="Кожа">Кожа</label>
+<label><input type="checkbox" value="Замша">Замша</label>
+<label><input type="checkbox" value="Табак">Табак</label>
+
+<label><input type="checkbox" value="Морские ноты">Морские ноты</label>
+<label><input type="checkbox" value="Озон">Озон</label>
+<label><input type="checkbox" value="Мята">Мята</label>
+<label><input type="checkbox" value="Зелёный чай">Зелёный чай</label>
+
+<label><input type="checkbox" value="Пачули">Пачули</label>
+<label><input type="checkbox" value="Ветивер">Ветивер</label>
+<label><input type="checkbox" value="Мох">Мох</label>
+<label><input type="checkbox" value="Инжирный лист">Инжирный лист</label>
+
+</div>
+
+</div>
+
+<div class="block" id="characterBlock">
+
+<h3>Характер аромата</h3>
+
+<div class="checkbox-grid">
+
+<label><input type="checkbox" value="Свежий">Свежий</label>
+<label><input type="checkbox" value="Чистый">Чистый</label>
+<label><input type="checkbox" value="Лёгкий">Лёгкий</label>
+<label><input type="checkbox" value="Воздушный">Воздушный</label>
+<label><input type="checkbox" value="Нежный">Нежный</label>
+
+<label><input type="checkbox" value="Романтичный">Романтичный</label>
+<label><input type="checkbox" value="Соблазнительный">Соблазнительный</label>
+<label><input type="checkbox" value="Сексуальный">Сексуальный</label>
+
+<label><input type="checkbox" value="Брутальный">Брутальный</label>
+<label><input type="checkbox" value="Статусный">Статусный</label>
+<label><input type="checkbox" value="Роскошный">Роскошный</label>
+<label><input type="checkbox" value="Премиальный">Премиальный</label>
+
+<label><input type="checkbox" value="Загадочный">Загадочный</label>
+<label><input type="checkbox" value="Восточный">Восточный</label>
+<label><input type="checkbox" value="Ночной">Ночной</label>
+
+<label><input type="checkbox" value="Деловой">Деловой</label>
+<label><input type="checkbox" value="Спокойный">Спокойный</label>
+<label><input type="checkbox" value="Энергичный">Энергичный</label>
+
+<label><input type="checkbox" value="Яркий">Яркий</label>
+<label><input type="checkbox" value="Универсальный">Универсальный</label>
+<label><input type="checkbox" value="Молодёжный">Молодёжный</label>
+
+<label><input type="checkbox" value="Элитный">Элитный</label>
+<label><input type="checkbox" value="Смелый">Смелый</label>
+<label><input type="checkbox" value="Тёплый">Тёплый</label>
+<label><input type="checkbox" value="Холодный">Холодный</label>
+
+</div>
+
+</div>
+
+<button type="submit">
+ПОДТВЕРДИТЬ ВЫБОР
+</button>
+
+</form>
+
+<div id="result"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -48,20 +48,9 @@ form.addEventListener("submit", (e) => {
     confirmOrder.checked = false;
     telegramBtn.classList.add("hidden");
 
-    // сохраняем
-    localStorage.setItem("blackoud_age", age);
-    localStorage.setItem("blackoud_gender", gender);
-    localStorage.setItem("blackoud_occasion", occasion);
-    localStorage.setItem("blackoud_volume", volume);
-    localStorage.setItem("blackoud_format", format.value);
-
-    // сообщение (оставляем если захочешь копировать потом)
+    // сообщение
     const telegramMessage =
-`Привет!
-
-Вот мой заказ:
-
-Возраст: ${age}
+`Возраст: ${age}
 Для кого: ${gender}
 Куда/Когда: ${occasion}
 
@@ -82,6 +71,13 @@ ${delivery}`;
 
     telegramBtn.dataset.message = telegramMessage;
 
+    // сохранение
+    localStorage.setItem("blackoud_age", age);
+    localStorage.setItem("blackoud_gender", gender);
+    localStorage.setItem("blackoud_occasion", occasion);
+    localStorage.setItem("blackoud_volume", volume);
+    localStorage.setItem("blackoud_format", format.value);
+
 });
 
 confirmOrder.addEventListener("change", () => {
@@ -99,15 +95,20 @@ telegramBtn.addEventListener("click", (e) => {
 
     setTimeout(() => {
 
-        // ПРОСТО ОТКРЫВАЕМ ТГ ЧАТ
-        const url = `https://t.me/aromatoud`;
+        const text =
+`Привет 👋
+Подбери заказ пожалуйста
+
+${telegramBtn.dataset.message}`;
+
+        const url = `https://t.me/share/url?text=${encodeURIComponent(text)}`;
 
         window.location.href = url;
 
         telegramBtn.classList.remove("loading");
         telegramBtn.textContent = "ОФОРМИТЬ В TELEGRAM";
 
-    }, 400);
+    }, 300);
 
 });
 
@@ -124,3 +125,4 @@ document.getElementById("occasion").value =
 document.getElementById("volume").value =
     localStorage.getItem("blackoud_volume") || "3";
 });
+

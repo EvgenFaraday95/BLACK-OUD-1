@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLACK OUD №1</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,13 +12,9 @@
 
 <div class="container">
 
-<div class="logo">
-BLACK OUD №1
-</div>
+<div class="logo">BLACK OUD №1</div>
 
-<p class="subtitle">
-Подберите идеальный аромат и оформите заказ за минуту
-</p>
+<p class="subtitle">Подберите идеальный аромат и оформите заказ за минуту</p>
 
 <div class="delivery-banner">
 🚚 Бесплатная доставка при заказе от 3000 ₽
@@ -27,33 +22,26 @@ BLACK OUD №1
 
 <form id="perfumeForm">
 
+<!-- AGE -->
 <div class="block">
 <label>Возраст</label>
-<input
-type="number"
-id="age"
-min="16"
-max="100"
-placeholder="Введите возраст">
+<input type="number" id="age" min="16" max="100">
 </div>
 
+<!-- GENDER -->
 <div class="block">
 <label>Для кого</label>
-
 <select id="gender">
 <option>Мужчина</option>
 <option>Женщина</option>
 <option>Унисекс</option>
 </select>
-
 </div>
 
+<!-- OCCASION -->
 <div class="block">
-
 <label>Куда / Когда будете носить аромат</label>
-
 <select id="occasion">
-
 <option>Повседневно</option>
 <option>Работа</option>
 <option>Офис</option>
@@ -69,35 +57,22 @@ placeholder="Введите возраст">
 <option>Путешествия</option>
 <option>Деловая встреча</option>
 <option>Праздник</option>
-
 </select>
-
 </div>
 
+<!-- FORMAT -->
 <div class="block">
-
 <label>Формат</label>
-
 <select id="format">
-
-<option value="100">
-Спрей (100 ₽ за 1 мл)
-</option>
-
-<option value="200">
-Масло (200 ₽ за 1 мл)
-</option>
-
+<option value="100">Спрей (100 ₽/мл)</option>
+<option value="200">Масло (200 ₽/мл)</option>
 </select>
-
 </div>
 
+<!-- VOLUME -->
 <div class="block">
-
 <label>Объём</label>
-
 <select id="volume">
-
 <option value="3">3 мл</option>
 <option value="5">5 мл</option>
 <option value="6">6 мл</option>
@@ -109,13 +84,11 @@ placeholder="Введите возраст">
 <option value="35">35 мл</option>
 <option value="50">50 мл</option>
 <option value="100">100 мл</option>
-
 </select>
-
 </div>
 
+<!-- NOTES -->
 <div class="block" id="notesBlock">
-
 <h3>Ноты аромата</h3>
 
 <div class="checkbox-grid">
@@ -173,11 +146,10 @@ placeholder="Введите возраст">
 <label><input type="checkbox" value="Инжирный лист">Инжирный лист</label>
 
 </div>
-
 </div>
 
+<!-- CHARACTER -->
 <div class="block" id="characterBlock">
-
 <h3>Характер аромата</h3>
 
 <div class="checkbox-grid">
@@ -215,20 +187,48 @@ placeholder="Введите возраст">
 <label><input type="checkbox" value="Холодный">Холодный</label>
 
 </div>
-
 </div>
 
-<button type="submit">
-ПОДТВЕРДИТЬ ВЫБОР
-</button>
+<button type="submit">ПОДОБРАТЬ АРОМАТ</button>
 
 </form>
 
-<div id="result"></div>
+<!-- RESULT -->
+<div id="result" class="result hidden">
+
+<h2>Проверьте заказ</h2>
+
+<div class="summary-box">
+<p><b>Возраст:</b> <span id="r_age"></span></p>
+<p><b>Пол:</b> <span id="r_gender"></span></p>
+<p><b>Событие:</b> <span id="r_occasion"></span></p>
+<p><b>Формат:</b> <span id="r_format"></span></p>
+<p><b>Объём:</b> <span id="r_volume"></span></p>
+</div>
+
+<div class="summary-box">
+<p><b>Ноты:</b> <span id="r_notes"></span></p>
+</div>
+
+<div class="summary-box">
+<p><b>Характер:</b> <span id="r_characters"></span></p>
+</div>
+
+<div class="price" id="r_price"></div>
+
+<div class="delivery" id="r_delivery"></div>
+
+<label class="confirm-check">
+<input type="checkbox" id="confirmOrder">
+Я проверил данные заказа
+</label>
+
+<a id="telegramBtn" class="order-btn hidden">ОФОРМИТЬ В TELEGRAM</a>
+
+</div>
 
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>

@@ -12,60 +12,60 @@ min-height:100vh;
 padding:15px;
 }
 
+/* CONTAINER */
 .container{
-max-width:1200px;
+max-width:1100px;
 margin:auto;
 background:#111;
 padding:25px;
 border-radius:25px;
 border:1px solid rgba(212,175,55,.25);
-box-shadow:0 0 30px rgba(212,175,55,.1);
+box-shadow:0 0 30px rgba(212,175,55,.08);
 }
 
+/* LOGO */
 .logo{
 text-align:center;
 font-size:42px;
 font-weight:700;
 color:#d4af37;
-letter-spacing:3px;
+letter-spacing:2px;
 margin-bottom:10px;
 }
 
 .subtitle{
 text-align:center;
 color:#aaa;
-margin-bottom:25px;
+margin-bottom:20px;
+font-size:14px;
 }
 
+/* DELIVERY BANNER */
 .delivery-banner{
-background:linear-gradient(
-90deg,
-
-#d4af37,
-
-#f6d86f
-);
+background:linear-gradient(90deg,#d4af37,#f6d86f);
 color:#000;
-padding:15px;
-border-radius:15px;
+padding:12px;
+border-radius:12px;
 text-align:center;
 font-weight:700;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
+/* BLOCKS */
 .block{
-margin-bottom:30px;
+margin-bottom:20px;
 }
 
 .block h3{
 color:#d4af37;
-margin-bottom:15px;
-font-size:20px;
+margin-bottom:12px;
+font-size:18px;
 }
 
+/* INPUTS */
 label{
 display:block;
-margin-bottom:10px;
+margin-bottom:8px;
 font-weight:500;
 }
 
@@ -74,23 +74,43 @@ select{
 width:100%;
 padding:14px;
 border-radius:12px;
-border:1px solid #333;
+border:1px solid #2a2a2a;
 background:#1b1b1b;
 color:#fff;
 font-size:15px;
+outline:none;
+transition:.3s;
 }
 
 input:focus,
 select:focus{
-outline:none;
 border-color:#d4af37;
-box-shadow:0 0 10px rgba(212,175,55,.3);
+box-shadow:0 0 12px rgba(212,175,55,.25);
 }
 
+/* BUTTON */
+button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:15px;
+background:#d4af37;
+color:#000;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.25s;
+}
+
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(212,175,55,.2);
+}
+
+/* CHECKBOX GRID */
 .checkbox-grid{
 display:grid;
-grid-template-columns:
-repeat(auto-fill,minmax(180px,1fr));
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
 gap:10px;
 }
 
@@ -98,12 +118,13 @@ gap:10px;
 display:flex;
 align-items:center;
 gap:8px;
-padding:12px;
-background:#1a1a1a;
+padding:10px;
+background:#151515;
 border:1px solid #222;
 border-radius:12px;
 cursor:pointer;
-transition:.3s;
+transition:.2s;
+font-size:14px;
 }
 
 .checkbox-grid label:hover{
@@ -116,132 +137,109 @@ width:auto;
 accent-color:#d4af37;
 }
 
-button{
-width:100%;
-padding:18px;
-border:none;
-border-radius:15px;
-background:#d4af37;
-color:#000;
-font-size:18px;
-font-weight:700;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-transform:translateY(-2px);
-box-shadow:0 0 20px rgba(212,175,55,.4);
-}
-
-.result-card{
-margin-top:30px;
-padding:25px;
+/* RESULT CARD */
+.result{
+margin-top:25px;
+padding:20px;
 background:#181818;
-border:1px solid #d4af37;
-border-radius:20px;
-animation:fadeIn .4s ease;
-}
-
-.result-card h2{
-color:#d4af37;
-margin-bottom:20px;
-font-size:28px;
-}
-
-.summary-box{
-background:#121212;
-padding:15px;
-border-radius:12px;
-margin-bottom:15px;
-border:1px solid #2a2a2a;
-}
-
-.summary-title{
-color:#d4af37;
-font-weight:700;
-margin-bottom:10px;
-}
-
-.result-card p{
-line-height:1.7;
-margin-bottom:8px;
-}
-
-.price{
-font-size:34px;
-font-weight:700;
-color:#d4af37;
-margin:20px 0;
-text-align:center;
-}
-
-.delivery{
-font-size:20px;
-font-weight:700;
-text-align:center;
-margin-bottom:20px;
-}
-
-.free{
-color:#4caf50;
-}
-
-.paid{
-color:#ff9800;
-}
-
-.confirm-check{
-display:flex;
-align-items:center;
-gap:10px;
-padding:15px;
-margin-top:15px;
-background:#1a1a1a;
-border-radius:12px;
-}
-
-.confirm-check input{
-width:auto;
-}
-
-.order-btn{
-display:block;
-width:100%;
-padding:18px;
-margin-top:15px;
-text-align:center;
-background:#d4af37;
-color:#000;
-font-weight:700;
-text-decoration:none;
-border-radius:15px;
-transition:.3s;
-}
-
-.order-btn:hover{
-opacity:.9;
-transform:translateY(-2px);
+border:1px solid rgba(212,175,55,.5);
+border-radius:18px;
+animation:fadeIn .35s ease;
 }
 
 .hidden{
 display:none;
 }
 
-@keyframes fadeIn{
-
-from{
-opacity:0;
-transform:translateY(20px);
+/* SUMMARY BOX */
+.summary-box{
+background:#121212;
+padding:12px;
+border-radius:12px;
+margin-bottom:12px;
+border:1px solid #222;
 }
 
+.summary-box p{
+margin-bottom:6px;
+line-height:1.5;
+}
+
+/* PRICE */
+.price{
+font-size:34px;
+font-weight:700;
+color:#d4af37;
+text-align:center;
+margin:20px 0;
+}
+
+/* DELIVERY */
+.delivery{
+text-align:center;
+font-size:18px;
+font-weight:600;
+margin-bottom:15px;
+}
+
+/* CHECKBOX CONFIRM */
+.confirm-check{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px;
+background:#1a1a1a;
+border-radius:12px;
+border:1px solid #222;
+margin-top:10px;
+}
+
+.confirm-check input{
+width:auto;
+accent-color:#d4af37;
+}
+
+/* TELEGRAM BUTTON */
+.order-btn{
+display:block;
+width:100%;
+padding:16px;
+margin-top:12px;
+text-align:center;
+background:#d4af37;
+color:#000;
+font-weight:700;
+text-decoration:none;
+border-radius:14px;
+cursor:pointer;
+transition:.25s;
+position:relative;
+}
+
+.order-btn:hover{
+transform:translateY(-2px);
+opacity:.95;
+}
+
+/* LOADING STATE */
+.order-btn.loading{
+opacity:0.7;
+pointer-events:none;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(15px);
+}
 to{
 opacity:1;
 transform:translateY(0);
 }
-
 }
 
+/* SCROLLBAR */
 ::-webkit-scrollbar{
 width:8px;
 }
@@ -255,74 +253,33 @@ background:#d4af37;
 border-radius:20px;
 }
 
-/* Телефоны */
-
+/* MOBILE */
 @media(max-width:768px){
-
-body{
-padding:10px;
-}
 
 .container{
 padding:15px;
-border-radius:15px;
+border-radius:16px;
 }
 
 .logo{
 font-size:28px;
-}
-
-.subtitle{
-font-size:14px;
 }
 
 .checkbox-grid{
 grid-template-columns:1fr;
 }
 
-input,
-select{
-font-size:16px;
-}
-
-button{
-font-size:16px;
-padding:15px;
-}
-
-.order-btn{
-font-size:16px;
-padding:15px;
-}
-
-.result-card{
-padding:20px;
-}
-
 .price{
 font-size:28px;
 }
 
-.delivery{
-font-size:18px;
+button{
+font-size:15px;
+padding:14px;
 }
 
+.order-btn{
+font-size:15px;
+padding:14px;
 }
-
-/* Очень маленькие экраны */
-
-@media(max-width:400px){
-
-.logo{
-font-size:24px;
-}
-
-.block h3{
-font-size:18px;
-}
-
-.price{
-font-size:24px;
-}
-
 }

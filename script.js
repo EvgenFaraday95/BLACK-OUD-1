@@ -3,316 +3,165 @@ document.addEventListener("DOMContentLoaded", () => {
 const form = document.getElementById("perfumeForm");
 const result = document.getElementById("result");
 
-form.addEventListener("submit", function (e) {
+const confirmOrder = document.getElementById("confirmOrder");
+const telegramBtn = document.getElementById("telegramBtn");
 
-e.preventDefault();
+form.addEventListener("submit", (e) => {
 
-const age =
-document.getElementById("age").value || 100;
+    e.preventDefault();
+    e.stopPropagation();
 
-const gender =
-document.getElementById("gender").value;
+    const age =
+        document.getElementById("age").value || 100;
 
-const occasion =
-document.getElementById("occasion").value;
+    const gender =
+        document.getElementById("gender").value;
 
-const formatSelect =
-document.getElementById("format");
+    const occasion =
+        document.getElementById("occasion").value;
 
-const formatText =
-formatSelect.options[
-formatSelect.selectedIndex
-].text;
+    const format =
+        document.getElementById("format");
 
-const pricePerMl =
-Number(formatSelect.value);
+    const formatText =
+        format.options[format.selectedIndex].text;
 
-const volume =
-Number(
-document.getElementById("volume").value
-);
+    const pricePerMl =
+        Number(format.value);
 
-const totalPrice =
-pricePerMl * volume;
+    const volume =
+        Number(document.getElementById("volume").value);
 
-let delivery = "";
-let deliveryClass = "";
+    const notes =
+        [...document.querySelectorAll("#notesBlock input:checked")]
+            .map(item => item.value)
+            .join(", ") || "Не выбраны";
 
-if (totalPrice >= 3000) {
+    const characters =
+        [...document.querySelectorAll("#characterBlock input:checked")]
+            .map(item => item.value)
+            .join(", ") || "Не выбраны";
 
-delivery = "Бесплатно";
-deliveryClass = "free";
+    const totalPrice =
+        pricePerMl * volume;
 
-} else {
+    const delivery =
+        totalPrice >= 3000
+            ? "Бесплатно"
+            : "По тарифу";
 
-delivery = "По тарифу";
-deliveryClass = "paid";
+    document.getElementById("r_age").textContent = age;
+    document.getElementById("r_gender").textContent = gender;
+    document.getElementById("r_occasion").textContent = occasion;
+    document.getElementById("r_format").textContent = formatText;
+    document.getElementById("r_volume").textContent = volume + " мл";
+    document.getElementById("r_notes").textContent = notes;
+    document.getElementById("r_characters").textContent = characters;
+    document.getElementById("r_price").textContent =
+        totalPrice.toLocaleString() + " ₽";
+    document.getElementById("r_delivery").textContent =
+        "🚚 Доставка: " + delivery;
 
-}
+    result.classList.remove("hidden");
 
-const notes =
-[
-...document.querySelectorAll(
-"#notesBlock input:checked"
-)
-].map(item => item.value);
+    confirmOrder.checked = false;
+    telegramBtn.classList.add("hidden");
 
-const characters =
-[
-...document.querySelectorAll(
-"#characterBlock input:checked"
-)
-].map(item => item.value);
-
-const notesText =
-notes.length > 0
-? notes.join(", ")
-: "Не выбраны";
-
-const charactersText =
-characters.length > 0
-? characters.join(", ")
-: "Не выбраны";
-
-const telegramMessage = `Привет)
+    const telegramMessage =
+`Привет!
 
 Вот мой заказ:
 
 Возраст: ${age}
+Для кого: ${gender}
+Куда/Когда: ${occasion}
 
-Для кого:
-${gender}
-
-Куда/Когда:
-${occasion}
-
-Формат:
-${formatText}
-
-Объём:
-${volume} мл
+Формат: ${formatText}
+Объём: ${volume} мл
 
 Ноты:
-${notesText}
+${notes}
 
 Характер:
-${charactersText}
+${characters}
 
 Стоимость:
 ${totalPrice} ₽
 
 Доставка:
-${delivery}
-`;
+${delivery}`;
 
-const telegramLink =
-https://t.me/aromatoud?text=${encodeURIComponent(telegramMessage)};
+    telegramBtn.dataset.message = telegramMessage;
 
-result.innerHTML = `
+    localStorage.setItem("blackoud_age", age);
+    localStorage.setItem("blackoud_gender", gender);
+    localStorage.setItem("blackoud_occasion", occasion);
+    localStorage.setItem("blackoud_volume", volume);
+    localStorage.setItem("blackoud_format", format.value);
+});
 
-<div class="result-card">
+confirmOrder.addEventListener("change", () => {
 
-<h2>
-Проверьте заказ
-</h2>
+    if (confirmOrder.checked) {
+        telegramBtn.classList.remove("hidden");
+    } else {
+        telegramBtn.classList.add("hidden");
+    }
 
-<div class="summary-box">
+});
 
-<div class="summary-title">
-Основная информация
-</div>
+telegramBtn.addEventListener("click", (e) => {
 
+    e.preventDefault();
 
-<p>
-<strong>Возраст:</strong>
-${age}
-</p>
+    if (!telegramBtn.dataset.message) return;
 
+    telegramBtn.classList.add("loading");
+    telegramBtn.textContent = "Отправка...";
 
-<p>
-<strong>Для кого:</strong>
-${gender}
-</p>
+    const url =
+        `https://t.me/share/url?text=${encodeURIComponent(
+            telegramBtn.dataset.message
+        )}`;
 
+    setTimeout(() => {
 
-<p>
-<strong>Куда/Когда:</strong>
-${occasion}
-</p>
+        window.location.href = url;
 
+        telegramBtn.classList.remove("loading");
+        telegramBtn.textContent = "ОФОРМИТЬ В TELEGRAM";
 
-<p>
-<strong>Формат:</strong>
-${formatText}
-</p>
-
-
-<p>
-<strong>Объём:</strong>
-${volume} мл
-</p>
-
-
-</div>
-
-<div class="summary-box">
-
-<div class="summary-title">
-Выбранные ноты
-</div>
-
-
-<p>
-${notesText}
-</p>
-
-
-</div>
-
-<div class="summary-box">
-
-<div class="summary-title">
-Характер аромата
-</div>
-
-
-<p>
-${charactersText}
-</p>
-
-
-</div>
-
-<div class="price">
-${totalPrice.toLocaleString()} ₽
-</div>
-
-
-<div class="delivery ${deliveryClass}">
-🚚 Доставка: ${delivery}
-</div>
-
-
-<label class="confirm-check">
-
-<input
-type="checkbox"
-id="confirmOrder"
->
-
-Я проверил данные заказа
-
-</label>
-
-
-<a
-href="${telegramLink}"
-target="_blank"
-id="telegramBtn"
-class="order-btn hidden"
->
-ОФОРМИТЬ ЗАКАЗ
-</a>
-
-</div>
-
-`;
-
-const confirmOrder =
-document.getElementById("confirmOrder");
-
-const telegramBtn =
-document.getElementById("telegramBtn");
-
-confirmOrder.addEventListener(
-"change",
-function () {
-
-if (this.checked) {
-
-telegramBtn.classList.remove(
-"hidden"
-);
-
-} else {
-
-telegramBtn.classList.add(
-"hidden"
-);
-
-}
-
-}
-);
-localStorage.setItem(
-"blackoud_age",
-age
-);
-
-localStorage.setItem(
-"blackoud_gender",
-gender
-);
-
-localStorage.setItem(
-"blackoud_occasion",
-occasion
-);
-
-localStorage.setItem(
-"blackoud_volume",
-volume
-);
-
-localStorage.setItem(
-"blackoud_format",
-formatText
-);
+    }, 500);
 
 });
 
 const savedAge =
-localStorage.getItem(
-"blackoud_age"
-);
+    localStorage.getItem("blackoud_age");
 
 const savedGender =
-localStorage.getItem(
-"blackoud_gender"
-);
+    localStorage.getItem("blackoud_gender");
 
 const savedOccasion =
-localStorage.getItem(
-"blackoud_occasion"
-);
+    localStorage.getItem("blackoud_occasion");
 
 const savedVolume =
-localStorage.getItem(
-"blackoud_volume"
-);
+    localStorage.getItem("blackoud_volume");
 
-if (savedAge) {
-document.getElementById(
-"age"
-).value = savedAge;
-}
+const savedFormat =
+    localStorage.getItem("blackoud_format");
 
-if (savedGender) {
-document.getElementById(
-"gender"
-).value = savedGender;
-}
+if (savedAge)
+    document.getElementById("age").value = savedAge;
 
-if (savedOccasion) {
-document.getElementById(
-"occasion"
-).value = savedOccasion;
-}
+if (savedGender)
+    document.getElementById("gender").value = savedGender;
 
-if (savedVolume) {
-document.getElementById(
-"volume"
-).value = savedVolume;
-}
+if (savedOccasion)
+    document.getElementById("occasion").value = savedOccasion;
 
+if (savedVolume)
+    document.getElementById("volume").value = savedVolume;
+
+if (savedFormat)
+    document.getElementById("format").value = savedFormat;
 });

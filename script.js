@@ -49,7 +49,10 @@ form.addEventListener("submit", (e) => {
     telegramBtn.classList.add("hidden");
 
     const telegramMessage =
-`Возраст: ${age}
+`Привет 👋
+Подбери аромат пожалуйста
+
+Возраст: ${age}
 Для кого: ${gender}
 Куда/Когда: ${occasion}
 
@@ -95,19 +98,11 @@ telegramBtn.addEventListener("click", (e) => {
     setTimeout(() => {
 
         const text =
-`Привет 👋
-Подбери заказ пожалуйста
+${telegramBtn.dataset.message};
 
-${telegramBtn.dataset.message}`;
+        const url = `https://t.me/share/url?text=${encodeURIComponent(text)}`;
 
-        const encoded = encodeURIComponent(text);
-
-        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-        const appLink = `tg://msg?text=${encoded}`;
-        const webLink = `https://t.me/share/url?text=${encoded}`;
-
-        window.location.href = isMobile ? appLink : webLink;
+        window.location.href = url;
 
         telegramBtn.classList.remove("loading");
         telegramBtn.textContent = "ОФОРМИТЬ В TELEGRAM";

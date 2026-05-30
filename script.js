@@ -48,7 +48,6 @@ form.addEventListener("submit", (e) => {
     confirmOrder.checked = false;
     telegramBtn.classList.add("hidden");
 
-    // сообщение
     const telegramMessage =
 `Возраст: ${age}
 Для кого: ${gender}
@@ -101,9 +100,14 @@ telegramBtn.addEventListener("click", (e) => {
 
 ${telegramBtn.dataset.message}`;
 
-        const url = `https://t.me/share/url?text=${encodeURIComponent(text)}`;
+        const encoded = encodeURIComponent(text);
 
-        window.location.href = url;
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        const appLink = `tg://msg?text=${encoded}`;
+        const webLink = `https://t.me/share/url?text=${encoded}`;
+
+        window.location.href = isMobile ? appLink : webLink;
 
         telegramBtn.classList.remove("loading");
         telegramBtn.textContent = "ОФОРМИТЬ В TELEGRAM";
@@ -125,4 +129,3 @@ document.getElementById("occasion").value =
 document.getElementById("volume").value =
     localStorage.getItem("blackoud_volume") || "3";
 });
-

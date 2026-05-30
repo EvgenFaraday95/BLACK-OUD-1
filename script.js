@@ -32,7 +32,6 @@ form.addEventListener("submit", (e) => {
     const totalPrice = pricePerMl * volume;
     const delivery = totalPrice >= 3000 ? "Бесплатно" : "По тарифу";
 
-    // вывод
     document.getElementById("r_age").textContent = age;
     document.getElementById("r_gender").textContent = gender;
     document.getElementById("r_occasion").textContent = occasion;
@@ -50,7 +49,7 @@ form.addEventListener("submit", (e) => {
 
     const telegramMessage =
 `Привет 👋
-Подбери аромат пожалуйста
+Подбери аромат
 
 Возраст: ${age}
 Для кого: ${gender}
@@ -65,15 +64,11 @@ ${notes}
 Характер:
 ${characters}
 
-Стоимость:
-${totalPrice} ₽
-
-Доставка:
-${delivery}`;
+Стоимость: ${totalPrice} ₽
+Доставка: ${delivery}`;
 
     telegramBtn.dataset.message = telegramMessage;
 
-    // сохранение
     localStorage.setItem("blackoud_age", age);
     localStorage.setItem("blackoud_gender", gender);
     localStorage.setItem("blackoud_occasion", occasion);
@@ -93,14 +88,14 @@ telegramBtn.addEventListener("click", (e) => {
     if (!telegramBtn.dataset.message) return;
 
     telegramBtn.classList.add("loading");
-    telegramBtn.textContent = "Открываю...";
+    telegramBtn.textContent = "Открываю Telegram...";
 
     setTimeout(() => {
 
-        const text =
-${telegramBtn.dataset.message};
+        const text = telegramBtn.dataset.message;
 
-        const url = `https://t.me/share/url?text=${encodeURIComponent(text)}`;
+        // 🔥 ВАЖНО: открывает сразу чат @aromatoud
+        const url = `https://t.me/aromatoud?text=${encodeURIComponent(text)}`;
 
         window.location.href = url;
 
